@@ -132,30 +132,63 @@ int main(void)
 	cout << "★행렬의 곱셈 프로그램★" << endl << endl;
 
 	cout << "★행렬이 자동으로 2개 만들어질거라구~!★" << endl << endl;
-	cout << "★행렬의 행의 크기를 입력하라구~!★" << endl;
+	cout << "★2번째 행렬의 행의 크기를 입력하라구~!★" << endl;
 
-	int matrixcolnum = 0, matrixrownum = 0;
+	int hang = 0, yull = 0;
 
-	cin >> matrixcolnum;
-	cout << "★행렬의 열의 크기를 입력하라구~!★" << endl;
+	cin >> hang;
+	cout << "★1번째 행렬의 열의 크기를 입력하라구~!★" << endl;
 
-	cin >> matrixrownum;
+	cin >> yull;
 	
-	Matrix* matrix1 = new Matrix(matrixrownum, matrixcolnum);
+	Matrix* matrix1 = new Matrix(yull, hang);
 
 	cout << "★행렬의 원소를 1,1 부터 1,2 순서대로 너가 입력한 크기만큼까지 입력할거라구~!★" << endl;
 	int inputdata = 0;
 	
-	for (int i = 0; i < matrixcolnum - 1; i++)
+	for (int i = 0; i < yull ; i++)
 	{
-		for (int j = 0; j < matrixrownum + 1; j++)
+		for (int j = 0; j < hang; j++)
 		{
 			cin >> inputdata;
 			matrix1->InputMatrix(i, j, inputdata);
+			cout << endl;
+			matrix1->OuptPutAll();
 		}
 	}
+	cout << "★다 했니? 이제 2번째 행렬의 행을 넣으라구~★" << endl;
+
+	int hang2 = 0, yull2 = 0;
+	cin >> hang2;
+	cout << "★이제 2번째 행렬의 열을 넣으라구~★" << endl;
+	cin >> yull2;
+	Matrix* matrix2 = new Matrix(yull2, hang2);
+
+	cout << "★행렬의 원소를 1,1 부터 1,2 순서대로 너가 입력한 크기만큼까지 입력할거라구~!★" << endl;
+
+
+	int inputdata2 = 0;
+	for (int i = 0; i < yull2; i++)
+	{
+		for (int j = 0; j < hang2; j++)
+		{
+			cin >> inputdata2;
+			matrix2->InputMatrix(i, j, inputdata2);
+			cout << endl;
+			matrix2->OuptPutAll();
+		}
+	}
+
 	cout << endl << endl;
-	matrix1->OuptPutAll();
+
+	cout << "★두 행렬의 곱한 값은!★" << endl << endl;
+
+	Matrix* result = new Matrix(yull2 , hang);
+
+	result = MNG.MatrixMultiply(result, matrix1, matrix2);
+
+	result->OuptPutAll();
+
 	/*Matrix* mat = new Matrix(2, 3);
 	mat->InputMatrix2(1, 1, 1);
 	mat->InputMatrix2(1, 2, 2);
