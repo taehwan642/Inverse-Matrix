@@ -8,7 +8,7 @@ struct Matrix
 public:
 	int maxrow;
 	int maxcol;
-	vector<vector<double>> matrixdata ;
+	vector<vector<double>> matrixdata;
 	Matrix(int row, int col)
 	{
 		//matrixdata의 내부를 num의 사이즈로 재설정하며, 0으로 초기화함
@@ -35,13 +35,25 @@ public:
 	void InputMatrix(int rownum, int colnum, int data)
 	{
 		//rownum이 맥스보다 더 작아질시에도 리턴해야함
+		if (rownum > maxrow || colnum > maxcol || rownum < 0 || colnum < 0)
+		{
+			cout << "NO! " << data << endl;
+			return;
+		}
+
+		matrixdata[colnum][rownum] = data;
+	}
+
+	void InputMatrix2(int rownum, int colnum, int data)
+	{
+		//rownum이 맥스보다 더 작아질시에도 리턴해야함
 		if (rownum > maxrow || colnum > maxcol || rownum <= 0 || colnum <= 0)
 		{
 			cout << "NO! " << data << endl;
 			return;
 		}
 
-		matrixdata[colnum - 1][rownum - 1] = data;
+		matrixdata[colnum-1][rownum-1] = data;
 	}
 
 	void OuptPutAll()
@@ -113,33 +125,57 @@ struct Manager
 		return out;
 	}
 };
-
-
-
 int main(void)
 {
-	//입력값 받아와야함
 	Manager MNG;
-	Matrix * mat = new Matrix(2,3);
-	mat->InputMatrix(1, 1, 1);
-	mat->InputMatrix(1, 2, 2);
-	mat->InputMatrix(1, 3, 3);
-	mat->InputMatrix(2, 1, 4);
-	mat->InputMatrix(2, 2, 5);
-	mat->InputMatrix(2, 3, 6);
+	//입력값 받아와야함
+	cout << "★행렬의 곱셈 프로그램★" << endl << endl;
+
+	cout << "★행렬이 자동으로 2개 만들어질거라구~!★" << endl << endl;
+	cout << "★행렬의 행의 크기를 입력하라구~!★" << endl;
+
+	int matrixcolnum = 0, matrixrownum = 0;
+
+	cin >> matrixcolnum;
+	cout << "★행렬의 열의 크기를 입력하라구~!★" << endl;
+
+	cin >> matrixrownum;
+	
+	Matrix* matrix1 = new Matrix(matrixrownum, matrixcolnum);
+
+	cout << "★행렬의 원소를 1,1 부터 1,2 순서대로 너가 입력한 크기만큼까지 입력할거라구~!★" << endl;
+	int inputdata = 0;
+	
+	for (int i = 0; i < matrixcolnum - 1; i++)
+	{
+		for (int j = 0; j < matrixrownum + 1; j++)
+		{
+			cin >> inputdata;
+			matrix1->InputMatrix(i, j, inputdata);
+		}
+	}
+	cout << endl << endl;
+	matrix1->OuptPutAll();
+	/*Matrix* mat = new Matrix(2, 3);
+	mat->InputMatrix2(1, 1, 1);
+	mat->InputMatrix2(1, 2, 2);
+	mat->InputMatrix2(1, 3, 3);
+	mat->InputMatrix2(2, 1, 4);
+	mat->InputMatrix2(2, 2, 5);
+	mat->InputMatrix2(2, 3, 6);
 	Matrix* mat2 = new Matrix(3, 2);
-	mat2->InputMatrix(1, 1, 1);
-	mat2->InputMatrix(1, 2, 2);
-	mat2->InputMatrix(2, 1, 3);
-	mat2->InputMatrix(2, 2, 4);
-	mat2->InputMatrix(3, 1, 5);
-	mat2->InputMatrix(3, 2, 6);
+	mat2->InputMatrix2(1, 1, 1);
+	mat2->InputMatrix2(1, 2, 2);
+	mat2->InputMatrix2(2, 1, 3);
+	mat2->InputMatrix2(2, 2, 4);
+	mat2->InputMatrix2(3, 1, 5);
+	mat2->InputMatrix2(3, 2, 6);
 	mat->OuptPutAll();
 	mat2->OuptPutAll();
 	Matrix* result = new Matrix(3, 3);
 	result = MNG.MatrixMultiply(result, mat, mat2);
 	result->OuptPutAll();
 	MNG.MatrixTranspos(result);
-	result->OuptPutAll();
+	result->OuptPutAll();*/
 	return 0;
 }
