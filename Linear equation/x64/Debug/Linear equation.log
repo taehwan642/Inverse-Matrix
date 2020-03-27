@@ -1,2 +1,17 @@
 ﻿  Linear equation.cpp
-  Linear equation.vcxproj -> C:\Users\skill_7\Desktop\git\Linear-equation\x64\Debug\Linear equation.exe
+C:\Users\taehw\Documents\GitHub\Linear-equation\Linear equation\Linear equation.cpp(177,29): warning C4244: 'return': '_Ty'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\taehw\Documents\GitHub\Linear-equation\Linear equation\Linear equation.cpp(181,53): warning C4244: '=': '_Ty'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\taehw\Documents\GitHub\Linear-equation\Linear equation\Linear equation.cpp(207,15): warning C4244: '=': '_Ty'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty=double
+          ]
+  Linear equation.vcxproj -> C:\Users\taehw\Documents\GitHub\Linear-equation\x64\Debug\Linear equation.exe
