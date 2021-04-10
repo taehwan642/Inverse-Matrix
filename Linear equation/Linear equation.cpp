@@ -35,7 +35,7 @@ public:
 	}
 };
 
-void getCofactor(Matrix& A, Matrix& temp, int p, int q, int n) // 여인수를 구해다주는 함수!
+void getCofactor(const Matrix& A, Matrix& temp, int p, int q, int n) // 여인수를 구해다주는 함수!
 {
 	int i = 0, j = 0; // n - 1 X n - 1 행렬에 넣을 x, y좌표
 
@@ -64,7 +64,7 @@ int determinant(Matrix& A, int n)
 	if (n == 2) // 계산 압축
 		return ((A.matrixdata[0][0] * A.matrixdata[1][1]) - (A.matrixdata[1][0] * A.matrixdata[0][1]));
 
-	Matrix temp(A.maxRow, A.maxCol); // n X n 행렬의 여인수를 담을 임시 행렬
+	Matrix temp(A.maxRow - 1, A.maxCol - 1); // n X n 행렬의 여인수를 담을 임시 행렬
 
 	int sign = 1;  // sign = +, -, +, -.... 형태로 지속되는 결과값에 영향을 주는 정수
 
